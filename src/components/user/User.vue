@@ -58,9 +58,11 @@
 				<i class="transition duration-200 ease-in-out material-icons-round text-gray-500 hover:text-blue-500 md:text-md">person_remove</i>
             </a>
         </td> 
-        <td>   
-   
-        </td>
+        <td class="hidden md:table-cell text-center md:pl-1 md:py-5  bg-white text-sm">
+            <a @click="showId(userdata._id)" class="text-gray-500 cursor-pointer ml-2">
+				<i class="transition duration-200 ease-in-out material-icons-round text-gray-500 hover:text-blue-500 md:text-md">content_copy</i>
+            </a>
+        </td> 
        
     </tr>
    
@@ -80,6 +82,11 @@ export default {
         const {deleteUser} = useUser()
         return{
             deleteUser
+        }
+    },
+    methods:{
+        async showId(id){
+            alert("the courier id: "+id)
         }
     }
     }

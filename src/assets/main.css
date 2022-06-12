@@ -8,6 +8,9 @@
   .green-point{
     color: rgb(10, 135, 46);
   }
+  .blue-point{
+    color: rgb(85, 85, 85);
+  }
   
   /* body {
     background-image:url('home.jpg');

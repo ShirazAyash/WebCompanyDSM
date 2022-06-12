@@ -15,7 +15,8 @@ import VueGoogleMaps from "@fawmi/vue-google-maps";
 const app = createApp(App)
 app.use(VueGoogleMaps, {
   load: {
-    key: "AIzaSyDB68uZ8fUXV8ldaevGTEGGJzo22QDfvg0"
+    key: "AIzaSyDB68uZ8fUXV8ldaevGTEGGJzo22QDfvg0",
+    libraries: 'places'
   }
 });
 

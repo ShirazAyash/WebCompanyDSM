@@ -271,6 +271,7 @@ export default {
        overflow-y: auto;
        padding-bottom: 5%;
        border-radius: 25px;
+       height: 600px;
     }
    
 

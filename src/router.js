@@ -5,14 +5,20 @@ import UserLogin from './components/login/Login.vue'
 import Home from './components/Home.vue'
 import UserSignUp from './components/login/Signup.vue'
 import UserCreate from './components/userform/UserForm.vue'
-import OrderCreate from './components/orderform/OrderForm.vue'
-import UserEdit from './components/userform/UserEdit.vue'
+import OrderCreate from './components/orderform/OrderAddForm.vue'
+import OrderEdit from './components/orderform/OrderEdit.vue'
+import Profile from './components/login/Profile.vue'
 
 const routes = [
     {
 		path: '/',
 		name: 'home',
         component: Home,
+    },
+    {
+		path: '/profile',
+		name: 'profile',
+        component: Profile,
     },
     {
 		path: '/couriers',
@@ -42,13 +48,13 @@ const routes = [
     },
     {
         path:'/newOrder',
-        name:'OrderForm',
+        name:'OrderAddForm',
         component: OrderCreate
     },
     {
-        path:'/edit/:id',
-        name:'user.edit',
-        component:UserEdit,
+        path:'/orderedit/:id',
+        name:'OrderEdit',
+        component: OrderEdit,
         props:true
 
     },

@@ -59,7 +59,7 @@ export default {
             this.isPressed=!this.isPressed;
         },
         async profilePage(){
-            this.$router.push({name:'home'});
+            this.$router.push({name:'profile'});
             this.isPressed=false
         },
         async logout(){

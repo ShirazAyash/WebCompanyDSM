@@ -8,73 +8,33 @@
             <div class="-mx-4 sm:-mx-8 px-4 sm:px-8 py-6  ">
                 <div class="flex justify-between ">
                     <div>
-                        <p class="text-3xl font-bold ">ORDERS 
+                        <p class="text-3xl text-left font-bold ">ORDERS 
                             <span class="material-icons">
                                     room_service
                             </span>
                             <router-link to="/newOrder" class="hover:shadow-md p-3   md:p-1 rounded-full duration-1000 ease-in-out transform hover:scale-125 delay-200  hover:bg-blue-300 hover:text-3xl font-bold text-center bg-blue-200  cursor-pointer ">
                              <span class="p-3    xl:mr-7 material-icons-outlined">
-                                person_add
+                                add_box
                             </span>
                         </router-link>
                          </p>
                          
-                        <p class="text-gray-400 mt-2 mb-5">{{data}} orders</p>
-                       <tr class="grid grid-cols-8 md:pl-5">
-                           <td class="table_cell ">
-                                <p class="text-center pr-4 w-4 md:text-base text-gray-900 whitespace-no-wrap">
-                                    status
-                                </p>
-                            </td>
-                            <td class="table_cell">
-                                <p class="text-center pr-4 md:text-base text-gray-900 whitespace-no-wrap">
-                                    Full Name
-                                </p>
-                            </td>
-                            <td class="table_cell">
-                                <p class="text-center pr-16 md:text-base text-gray-900 whitespace-no-wrap">
-                                    Email
-                                </p>
-                            </td> 
-                            <td class="table_cell">
-                                <p class="text-center pr-16 md:text-base text-gray-900 whitespace-no-wrap">
-                                    First Name
-                                </p>
-                            </td>
-                            <td class="table_cell">
-                                <p class="text-center pr-16 md:text-base text-gray-900 whitespace-no-wrap">
-                                    Last Name
-                                </p>
-                            </td>
-                            <td class="table_cell">
-                                <p class="text-center pr-16 md:text-base text-gray-900 whitespace-no-wrap">
-                                    Phone Number
-                                </p>
-                            </td>
-                            <td class="table_cell">
-                                <p class="text-center pr-16 md:text-base text-gray-900 whitespace-no-wrap">
-                                    Vehicle
-                                </p>
-                            </td> 
-                            <td class="table_cell">
-                                <p class="text-center pr-16 md:text-base text-gray-900 whitespace-no-wrap">
-                                    Remove   
-                                </p>
-                            </td> 
-                        </tr>
+                        <p class="text-gray-400 mt-2 text-left mb-5">{{data}} orders</p>
                     </div>
                     <filter-order @setFilter="filterData" ></filter-order>
                 
                 </div>
                 <div class="windowcontent">
-                <div class="inline-block min-w-full shadow md:shadow-xl md:pl-4 pt-6 rounded-lg  ">
+                <div class="inline-block min-w-full shadow md:shadow-xl pl-2 pt-5 rounded-lg  ">
                   
                     <tbody>
                     
                         <transition-group name='list'>
                              
-                                 <order  v-show="!isFilter" v-for="order in ordersdata" :key="order.id+122" 
-                                        :orderdata='order' ></order>
+                                 <order v-show="!isFilter" v-for="order in ordersdata" :key="order.id+122" 
+                                        :orderdata='order' >
+                   
+                                        </order>
                              
                                  <!-- <user   v-show="isFilter" v-for="user in filterbyPage" :key="user.id" 
                                         :userdata='user'  @click="openModal(user)"   >
@@ -269,6 +229,7 @@ export default {
        overflow-y: auto;
        padding-bottom: 5%;
        border-radius: 25px;
+       height: 600px;
     }
    
 

@@ -51,7 +51,7 @@
 import {addCourier} from '../../composables/UserService'//UserService'
 //import Header from './HeaderSign.vue'
 export default {
-  name: 'login',
+  name: 'UserForm',
   components: {
     //Header
   },
