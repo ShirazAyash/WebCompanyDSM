@@ -21,7 +21,7 @@
                          
                         <p class="text-gray-400 mt-2 text-left mb-5">{{data}} orders</p>
                     </div>
-                    <filter-order @setFilter="filterData" ></filter-order>
+                    <!-- <filter-order @setFilter="filterData" ></filter-order> -->
                 
                 </div>
                 <div class="windowcontent">
@@ -95,13 +95,13 @@
 import {   computed, onMounted,ref    } from '@vue/runtime-core'
 import useOrder from '../../composables/Orders'
 import Order from '../orders/order.vue'
-import FilterOrder from '../../components/functionalities/FilterOrder.vue'
+//import FilterOrder from '../../components/functionalities/FilterOrder.vue'
 import { useRouter } from 'vue-router'
 export default {
     name:'ListOrder',
     components:{
         Order,
-        FilterOrder,
+        //FilterOrder,
         //Modal
         
     },

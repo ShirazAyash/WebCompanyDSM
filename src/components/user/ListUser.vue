@@ -76,9 +76,9 @@
                                  <user  v-show="!isFilter" v-for="user in usersdata" :key="user.id+122" 
                                         :userdata='user' ></user>
                              
-                                 <!-- <user   v-show="isFilter" v-for="user in filterbyPage" :key="user.id" 
-                                        :userdata='user'  @click="openModal(user)"   >
-                                </user> -->
+                                 <user   v-show="isFilter" v-for="user in filterbyPage" :key="user.id" 
+                                        :userdata='user'   >
+                                </user>
                              
                         
                         </transition-group>
@@ -175,13 +175,16 @@ export default {
 
         const filterData=async(data)=>{
              const user = localStorage.getItem('user-info');
+             console.log(isFilter.value)
             const id = JSON.parse(user)._id;
+            isFilter.value=true
             switch(data){
                 case 'all':
-                    filteredData.value = await getAllData({status:'no'})
+                    // filteredData.value = await getAllData({status:'no'})
                     filteredData.value = await getAllData({company_id:id})
                     break;
                 case 'idle':
+                    
                     filteredData.value = await getAllData({company_id:id,status:'idle'})
                     break;
                 case 'offline':
