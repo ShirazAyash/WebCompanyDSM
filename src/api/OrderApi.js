@@ -1,16 +1,19 @@
 import axios from 'axios'
+const User = axios.create({
+    baseURL:process.env.VUE_APP_API_ENDPOINT
+})
 
 export async function geto(params) {
-    const response = await axios.get(`/api/order_by_company`,{ params: { params }});
+    const response = await User.get(`/api/order_by_company`,{ params: { params }});
     return response.data
 }
 export async function getOrderById(id) {
-    const response = await axios.get(`/api/findOrder`,{params:{_id:id}});
+    const response = await User.get(`/api/findOrder`,{params:{_id:id}});
     return response.data
 }
 export async function uploadOrder(formData) {
     console.log(formData);
-    axios.post(  "/api/companyID/deliveries",
+    User.post(  "/api/companyID/deliveries",
         formData,
         {
             headers: {
@@ -25,7 +28,7 @@ export async function uploadOrder(formData) {
     });
 }
 export async function deleteo(id) {
-    const response = await axios.delete(`/api/delete_order_by_company`,{params:{collection:"Orders",_id:id}});
+    const response = await User.delete(`/api/delete_order_by_company`,{params:{collection:"Orders",_id:id}});
     return response
 }
 // export async function postc(data) {
