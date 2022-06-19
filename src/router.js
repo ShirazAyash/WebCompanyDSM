@@ -8,6 +8,7 @@ import UserCreate from './components/userform/UserForm.vue'
 import OrderCreate from './components/orderform/OrderAddForm.vue'
 import OrderEdit from './components/orderform/OrderEdit.vue'
 import Profile from './components/login/Profile.vue'
+import OrdersCSV from './components/csv/CSVupload.vue'
 
 const routes = [
     {
@@ -56,6 +57,12 @@ const routes = [
         name:'OrderEdit',
         component: OrderEdit,
         props:true
+
+    },
+    {
+        path:'/csv',
+        name:'OrdersCSV',
+        component: OrdersCSV,
 
     },
   
