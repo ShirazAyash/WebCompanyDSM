@@ -3,7 +3,7 @@
 	<div class="max-w-md w-full space-y-8 p-4 bg-gray-100 rounded-xl shadow-lg z-10">
 		<div class="grid  gap-8 grid-cols-1">
 				<div class="flex flex-col ">
-					<label class=" font-semibold text-gray-600">{{userdata.deadline}}</label>
+					<!-- <label class=" font-semibold text-gray-600">{{userdata.deadline}}</label> -->
 						<div class="flex flex-col sm:flex-row items-center">
 							<h2  class="font-semibold text-lg mr-auto">Edit order</h2>
 							<div class="w-full sm:w-auto sm:ml-auto mt-3 sm:mt-0"></div>
@@ -73,9 +73,17 @@
               </div>
               <br>
               <br>
-              <input type="checkbox" v-model="express" />
+              <input type="checkbox" v-model="userdata.express" />
               <label class=" font-semibold text-gray-600 py-2">Express
               </label>
+			<br>
+		<span v-if="!userdata.express">
+				<div class="flex flex-wrap items-stretch w-full mb-4 space-x-4 relative">
+					<input type="dst_name" name="dst_name" v-model="userdata.deadline" class="flex-shrink flex-grow flex-auto leading-normal w-px flex-1 border border-l-0 h-10 border-grey-light rounded-lg  px-3 relative focus:border-blue focus:shadow" placeholder="YYY-MM-DD HH:MM:SS" required>
+		</div>
+		<label class=" font-semibold text-gray-600 py-2">enter deadline format: YYY-MM-DD HH:MM:SS
+              </label>
+		</span>
 			
 			
 							</div>
