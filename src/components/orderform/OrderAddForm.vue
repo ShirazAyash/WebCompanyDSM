@@ -73,6 +73,13 @@
               <input type="checkbox" v-model="express" />
               <label class=" font-semibold text-gray-600 py-2">Express
               </label>
+              <span v-if="!express">
+				<div class="flex flex-wrap items-stretch w-full mb-4 space-x-4 relative">
+					<input type="dst_name" name="dst_name" v-model="deadline" class="flex-shrink flex-grow flex-auto leading-normal w-px flex-1 border border-l-0 h-10 border-grey-light rounded-lg  px-3 relative focus:border-blue focus:shadow" placeholder="YYYY-MM-DD HH:MM:SS" required>
+		</div>
+		<label class=" font-semibold text-gray-600 py-2">enter deadline format: YYYY-MM-DD HH:MM:SS
+              </label>
+		</span>
 							</div>
               
               
@@ -149,6 +156,7 @@ export default {
       dst_name:'',
       dst_phone:'',
       messagetouser:'',
+      deadline:''
       }
     }
   ,
@@ -173,7 +181,10 @@ export default {
             dst_contact:{
               name:this.dst_name,
               phone:this.dst_phone
-            }
+            },
+        }
+        if(!this.express){
+          order["deadline"]= this.deadline;
         }
         if(this.validInput()){
           console.log("in")
@@ -184,9 +195,10 @@ export default {
                     // localStorage.setItem("user-info",JSON.stringify(response.user));
                     // this.$router.push({name:'home'});
                 }else{
-					this.$router.push({name:'orders'});
-					alert('the order added successfuly')
-				}
+                  this.$router.push({name:'orders'});
+					alert(response.message)
+                }
+               
             });
         }else{
             this.messagetouser = 'please enter valid input';
@@ -196,7 +208,7 @@ export default {
     validInput(){
         if(this.src_address.length>1&&this.dst_address.length>1
         &&this.src_name.length>3&&this.dst_name.length>3
-        &&this.Vehicle_type.length>0){
+        &&this.Vehicle_type.length>0&&(this.express||this.deadline>0)){
             return true;
         }
         return false;

@@ -180,6 +180,9 @@ export default {
 		if(userdata.status=='on the way'||userdata.status=='collected'||userdata.status=='arrived'){
 			this.messagetouser = 'this status cant be update';
 		}else{
+			if(userdata.status=='pending'&& userdata.courier_id){
+				userdata.status='assigned'
+			}
 			putUpdateOrder(this.id,userdata).then(response => {
 			userdata.courier_name = response.first_name +" "+response.last_name
             this.messagetouser = response.message;
