@@ -11,7 +11,7 @@
     <transition name="dropdown">
         <div v-show="isfilter" class="z-20  relative">
             <ul class="text-sm md:text-base  bg-white shadow absolute right-5  md:right-9 w-40 text-center rounded-md  md:py-5  md:space-y-2 cursor-pointer  ">
-                <li @click="setFilter('collected')" :class="{'bg-blue-200':filtertype=='collected'}" class="transition duration-200  ease-in-out  hover:bg-blue-200 py-2  font-md">All</li>
+                <li @click="setFilter('all')" :class="{'bg-blue-200':filtertype=='all'}" class="transition duration-200  ease-in-out  hover:bg-blue-200 py-2  font-md">All</li>
                 <li @click="setFilter('idle')" :class="{'bg-blue-200':filtertype=='idle'}" class="transition duration-200  ease-in-out  hover:bg-blue-200 py-2  font-md">Status : idle</li>
                 <li @click="setFilter('busy')" :class="{'bg-blue-200':filtertype=='busy'}" class="transition duration-200  ease-in-out  hover:bg-blue-200 py-2  font-md">Status : Busy</li>
                 <li @click="setFilter('pending')" :class="{'bg-blue-200':filtertype=='pending'}" class="transition duration-200  ease-in-out  hover:bg-blue-200  py-2     font-md">Status: Pending</li>
