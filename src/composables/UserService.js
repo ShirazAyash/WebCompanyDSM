@@ -26,3 +26,7 @@ export async function putUpdateOrder(id,info) {
     const response = await axios.put(`/api/update_order`,{ params: { id:id, update:info }});
     return response.data
 }
+export async function updateCompany(id,info) {
+    const response = await axios.put(`/api/update_company`,{ params: { id:id, update:info }});
+    return response.data
+}

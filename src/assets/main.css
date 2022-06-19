@@ -101,7 +101,7 @@ body {
   padding-top: 2rem;
 }
   .text {
-    color: red;
+    color: rgba(255, 0, 0, 0.796);
     font-size: 15px;
     text-align: center;
   }
