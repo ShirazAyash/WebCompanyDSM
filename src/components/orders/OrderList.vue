@@ -11,17 +11,27 @@
                         <p class="text-3xl text-left font-bold ">ORDERS 
                             <span class="material-icons">
                                     room_service
-                            </span>
-                            <router-link to="/newOrder" class="hover:shadow-md p-3   md:p-1 rounded-full duration-1000 ease-in-out transform hover:scale-125 delay-200  hover:bg-blue-300 hover:text-3xl font-bold text-center bg-blue-200  cursor-pointer ">
-                             <span class="p-3    xl:mr-7 material-icons-outlined">
-                                add_box
-                            </span>
-                        </router-link>
+                            </span>    
                          </p>
-                         
                         <p class="text-gray-400 mt-2 text-left mb-5">{{data}} orders</p>
                     </div>
-                    <filter-order @setFilter="filterData" ></filter-order>
+                    <div>
+                        <router-link to="/csv" class="transition duration-200  ease-in-out mb-2 md:mb-0 bg-green-400 px-5 py-2 text-sm shadow-sm font-medium tracking-wider text-white rounded-full hover:shadow-lg hover:bg-green-200">
+                             <span class="material-icons-outlined">
+                                post_add
+                            </span>
+                             import file
+                        </router-link>
+                        <br>
+                        <br>
+                        <router-link to="/newOrder" class="transition duration-200  ease-in-out mb-2 md:mb-0 bg-blue-600 px-5 py-2 text-sm shadow-sm font-medium tracking-wider text-white rounded-full hover:shadow-lg hover:bg-blue-400">
+                             <span class="material-icons-outlined">
+                                add_circle
+                            </span>
+                            add manualy
+                        </router-link>
+                    </div>
+                    <!-- <filter-order @setFilter="filterData" ></filter-order> -->
                 
                 </div>
                 <div class="windowcontent">
@@ -95,13 +105,13 @@
 import {   computed, onMounted,ref    } from '@vue/runtime-core'
 import useOrder from '../../composables/Orders'
 import Order from '../orders/order.vue'
-import FilterOrder from '../../components/functionalities/FilterOrder.vue'
+//import FilterOrder from '../../components/functionalities/FilterOrder.vue'
 import { useRouter } from 'vue-router'
 export default {
     name:'ListOrder',
     components:{
         Order,
-        FilterOrder,
+        //FilterOrder,
         //Modal
         
     },
