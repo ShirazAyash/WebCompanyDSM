@@ -208,7 +208,7 @@ export default {
     validInput(){
         if(this.src_address.length>1&&this.dst_address.length>1
         &&this.src_name.length>3&&this.dst_name.length>3
-        &&this.Vehicle_type.length>0&&(this.express||this.deadline>0)){
+        &&this.Vehicle_type.length>0&&(this.express||this.deadline.length>0)){
             return true;
         }
         return false;

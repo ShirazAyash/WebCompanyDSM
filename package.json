@@ -2,19 +2,24 @@
   "name": "project",
   "version": "0.1.0",
   "private": true,
+  "main": "server.js",
   "scripts": {
-    "serve": "vue-cli-service serve --port=8082",
+    "serve": "vue-cli-service serve",
     "build": "vue-cli-service build",
-    "lint": "vue-cli-service lint"
+    "lint": "vue-cli-service lint",
+    "start": "node server.js"
   },
   "dependencies": {
     "@fawmi/vue-google-maps": "^0.9.67",
     "@tailwindcss/postcss7-compat": "^2.2.17",
     "autoprefixer": "^9.8.8",
     "axios": "^0.24.0",
+    "body-parser": "*",
     "core-js": "^3.6.5",
+    "express": "^4.18.1",
     "google-maps-api-loader": "^1.1.1",
     "postcss": "^7.0.39",
+    "serve-static": "^1.15.0",
     "tailwindcss": "npm:@tailwindcss/postcss7-compat@^2.2.17",
     "vue": "^3.0.0",
     "vue-axios": "^3.4.0",
@@ -31,7 +36,8 @@
     "@vue/compiler-sfc": "^3.0.0",
     "babel-eslint": "^10.1.0",
     "eslint": "^6.7.2",
-    "eslint-plugin-vue": "^7.0.0"
+    "eslint-plugin-vue": "^7.0.0",
+    "serve-static": "^1.15.0"
   },
   "eslintConfig": {
     "root": true,
