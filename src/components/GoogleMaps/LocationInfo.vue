@@ -1,10 +1,11 @@
 <template>
   <div class="popup">
       <div class="popup-inner">
-          <slot />
-          <button @click="TogglePopup()"  class="popup-close" >
-              close
+         <button @click="TogglePopup()"  class="transition duration-200  ease-in-out mb-2 md:mb-0 px-5 py-2 text-sm shadow-sm font-medium tracking-wider text-black rounded-full hover:shadow-lg hover:bg-blue-600" >
+             <span class="material-icons">close</span>
           </button>
+          <slot />
+         
       </div>
   </div>
 </template>
@@ -22,15 +23,12 @@ export default {
     bottom: 0;
     right: 0;
     z-index: 99;
-    background-color: rgba(0, 0, 0, 0.2);
+    background-color: rgba(10, 9, 9, 0.254);
 
     display: flex;
     align-items: center;
     justify-content: center;
 }
-.popup-inner{
-    background: white;
-    padding: 32px;
-}
+
 
 </style>

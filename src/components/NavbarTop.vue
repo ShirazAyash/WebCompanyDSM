@@ -39,19 +39,15 @@ export default {
       }
       
   },
-    setup(props, {emit}) {
+    setup() {
         const isPressed = ref(false)
-        const filtertype = ref('')
+        //const filtertype = ref('')
 
-        const setFilter = (type) => {
-            filtertype.value = type
-            emit('setFilter', type)
-        }
+       
 
         return {
             isPressed,
-            filtertype,
-            setFilter
+            //filtertype,
         }
     },
     methods:{

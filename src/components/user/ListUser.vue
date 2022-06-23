@@ -3,8 +3,6 @@
     <div >
         <div class="container  mx-auto pb-6 px-4  sm:px-8">
         <div class="py-8 md:py-4  ">
-            <div class="my-2 flex sm:flex-row flex-col">
-        </div>
             <div class="-mx-4 sm:-mx-8 px-4 sm:px-8 py-6  ">
                 <div class="flex justify-between ">
                     <div>
@@ -20,7 +18,7 @@
                          </p>
                          
                         <p class="text-gray-400 mt-2 mb-5">{{data}} users</p>
-                       <tr class="grid grid-cols-8 md:pl-5">
+                       <tr class="grid grid-cols-8 md:pl-5 w-full">
                            <td class="table_cell ">
                                 <p class="text-center pr-4 w-4 md:text-base text-gray-900 whitespace-no-wrap">
                                     status
@@ -61,6 +59,9 @@
                                     Remove   
                                 </p>
                             </td> 
+                            <td class="table_cell">
+                               
+                            </td> 
                         </tr>
                     </div>
                     <filter-user @setFilter="filterData" ></filter-user>
@@ -84,42 +85,6 @@
                         </transition-group>
 
                     </tbody> 
-                    
-                    <!-- <div
-                        class="px-5 py-5 bg-white  flex flex-col xs:flex-row items-center xs:justify-between">
-                       
-                        <div class="flex items-center space-x-5">
-                                <a 
-                                    @click="retrieveList(page-1)"  class="flex items-center px-4 py-2 text-gray-800 cursor-pointer  rounded-md">
-                                   <span 
-                                        :class="{'text-gray-200':data.page==1}"  
-                                         class="transition duration-200 ease-in-out material-icons text-base">
-                                                arrow_back_ios
-                                        </span>
-                                </a>
-
-                                <a   
-                                    v-for="(singlePage,index) of pages" :key="index" @click="retrieveList(singlePage)" :class="{'border-t-2 border-blue-500':singlePage==data.page}" 
-                                    class="transition duration-500 ease-in-out border-t-2 hover:border-blue-300 px-4 py-2 text-gray-700  cursor-pointer ">
-                                     
-                                     {{singlePage}}
-                                </a>
-
-                                <a 
-                                    @click="retrieveList(page+1)" class="px-4 py-2 font-bold  cursor-pointer rounded-3xl "  >
-                                    
-                                    <span 
-                                        :class="{'text-gray-200':data.page==data.total_pages}"
-                                        class="transition duration-200 ease-in-out material-icons text-base font-bold"
-                                       >
-                                        arrow_forward_ios
-                                    </span>
-                                </a>
-                         
-                </div> -->
-                                        <!-- <span class="text-sm font-md mt-5 font-bold xs:text-sm text-gray-400">
-                                            Showing {{entries == 0 ? 1 : entries}} to  of {{totalEntries}} 
-                                        </span> -->
                                         
                     </div>
                 </div>
@@ -135,16 +100,13 @@
 import {   computed, onMounted,ref    } from '@vue/runtime-core'
 import useUser from '../../composables/Users'
 import User from '../user/User.vue'
-//import paginateUserList from '../../composables/Paginate'
 import FilterUser from '../../components/functionalities/FilterUser.vue'
-//import Modal from '../functionalities/Modal.vue'
 import { useRouter } from 'vue-router'
 export default {
     name:'ListUser',
     components:{
         User,
         FilterUser,
-        //Modal
         
     },
        
@@ -154,12 +116,8 @@ export default {
         
         const {usersdata,data,getAllData,deleteUser} = useUser() 
         
-        
-        //Pagination 
-        
-        //const {page,pages,entries,totalEntries,setPages} = paginateUserList(data)
         const filterbyPage=computed(()=>{
-            console.log("in filterbyPage")
+            
             return filteredData.value
         })
          
@@ -167,11 +125,6 @@ export default {
        
         const isFilter=ref(false)
         const filteredData=ref([])
-        
-        // const retrieveList = (page)=>{
-        //     const params=setParam(page)
-        //     getAllData(params)
-        //     }
 
         const filterData=async(data)=>{
              const user = localStorage.getItem('user-info');
@@ -201,38 +154,25 @@ export default {
             }
         }
         
-        
-        //Modal for responsive design
-            // const isOpenModal=ref(false)
-            // const modalData=ref([])
-            // const openModal=(data)=>{
-            //     if(window.innerWidth < 820){
-            //         isOpenModal.value=true
-            //         modalData.value={...data}
-            //     }
-            // }
             
         const router = useRouter()
-        let userLog = localStorage.getItem('user-info');
-		if(!userLog){
-			router.push({name:'home'});
-		}
         onMounted(async ()=>{
-             const user = localStorage.getItem('user-info');
-            const id = JSON.parse(user)._id;
-            await getAllData({company_id:id})
-            //setPages(data)
-            //getEntireUserList()
+            let user = localStorage.getItem('user-info');
+            if(user){
+                const id = JSON.parse(user)._id;
+                await getAllData({company_id:id})
+            }else{
+                router.push({name:'login'});
+            }
+
         })
         
         return{
             data,usersdata,deleteUser,
-            //totalEntries,pages,page,entries,
             filteredData,isFilter,filterbyPage,filterData,
-             //isOpenModal,modalData, openModal,
-            //retrieveList,
+
         }
-    }
+    },
 }
 </script>
 

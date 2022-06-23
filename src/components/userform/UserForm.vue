@@ -1,4 +1,5 @@
 <template>
+<profile-setting></profile-setting>
    <div class=" z-0  flex items-center justify-center  mb-8 py-7 md:py-12 px-4 sm:px-6 lg:px-8  items-center">
 	<div class="max-w-md w-full   space-y-8 p-4 bg-gray-100 rounded-xl shadow-lg z-10">
 		<div class="grid  gap-8 grid-cols-1">
@@ -37,6 +38,7 @@
                         {{messagetouser}}
                         </div>
 								<div class="mt-5 text-right md:space-x-3 md:block flex flex-col-reverse">
+                                    <router-link to="/orders" class="mb-2 md:mb-0 bg-white px-5 py-2 text-sm shadow-sm font-medium tracking-wider border text-gray-600 rounded-full hover:shadow-lg hover:bg-gray-100"> Cancel </router-link>
 									<button @click="createUser()" class="transition duration-200  ease-in-out mb-2 md:mb-0 bg-green-400 px-5 py-2 text-sm shadow-sm font-medium tracking-wider text-white rounded-full hover:shadow-lg hover:bg-green-600"> Add courier </button>
 								</div>
 							</div>
@@ -50,10 +52,11 @@
 <script>
 import {addCourier} from '../../composables/UserService'//UserService'
 //import Header from './HeaderSign.vue'
+import ProfileSetting from '../NavbarTop.vue'
 export default {
   name: 'UserForm',
   components: {
-    //Header
+    ProfileSetting
   },
 //   props: ['messagetouser'],
   data() {
@@ -100,11 +103,11 @@ export default {
         return false;
 	}
   },
-//   mounted(){
-//       let user = localStorage.getItem('user-info');
-//       if(user){
-//           this.$router.push({name:'home'});
-//       }
-//   }
+  mounted(){
+      let user = localStorage.getItem('user-info');
+      if(!user){
+          this.$router.push({name:'login'});
+      }
+  }
 }
 </script>

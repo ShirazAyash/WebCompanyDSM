@@ -41,7 +41,7 @@
 									asterisk <abbr title="Required field">*</abbr></p>
                                  <br>
                         <button @click="googlesignup()" type="button" class="login-with-google-btn" >
-                            Sign in with Google
+                            Sign up with Google
                         </button>
                     <br>
                                 <p class="forgot-password text-left">
@@ -116,9 +116,9 @@ export default {
     },
     async googlesignup() {
       const googleUser = await this.$gAuth.signIn();
-      this.user_name=googleUser.getBasicProfile().Iv;
+      this.user_name=googleUser.getBasicProfile().getEmail();
       this.password=googleUser.getId();
-      this.company_name=googleUser.getBasicProfile().tf;
+      this.company_name=googleUser.getBasicProfile().getName();
       this.createUser();
     },
   },

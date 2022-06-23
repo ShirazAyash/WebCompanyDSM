@@ -16,10 +16,7 @@ export default {
       let user = localStorage.getItem('user-info');
       if(!user){
           this.$router.push({name:'login'});
-      }else{
-          this.name = JSON.parse(user).company_name;
       }
-      
   }
 }
 </script>

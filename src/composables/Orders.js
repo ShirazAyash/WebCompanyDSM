@@ -1,5 +1,7 @@
 //import  User  from '../api/UserApi';
-import {geto,deleteo,getOrderById}  from '../api/OrderApi';
+import {geto}  from '../api/OrderApi';
+import {deleteo} from '../api/OrderApi';
+import {getOrderById} from '../api/OrderApi';
 // import {postc}  from '../api/UserApi';
 // import { useRouter} from 'vue-router'
 import { ref } from '@vue/reactivity';
@@ -20,24 +22,9 @@ export default function useOrder(){
     } 
     const getOrder  = async (id) => {
         let response = await getOrderById(id)
-        //console.log(response.length)
-        //data.value = response.length;
         order.value=response
         return response
     }
-    const getEntireOrderList = async (pageNo=1)=>{
-        // let res = await getPageData();
-        // if (res.length > 0) {
-        //   EntireUserList.value= EntireUserList.value.concat(res)
-        //   res.concat(await getEntireUserList(pageNo+1));
-         
-        // } else { 
-        //     return 
-        // }
-        // return res
-        console.log(pageNo)
-        return
-      }
 
     
     
@@ -56,7 +43,6 @@ export default function useOrder(){
             EntireOrderList,
             getAllData,
             deleteOrder,
-            getEntireOrderList,
             getOrder
       }
   
