@@ -117,7 +117,7 @@ export default {
     },
     async googlelogin() {
       const googleUser = await this.$gAuth.signIn();
-      this.user_name=googleUser.getBasicProfile().Iv;
+      this.user_name=googleUser.getBasicProfile().getEmail();
       this.password=googleUser.getId();
       console.log(googleUser.getBasicProfile())
       this.createUser();

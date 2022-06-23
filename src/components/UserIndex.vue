@@ -12,10 +12,9 @@ export default {
     name: 'UserIndex',
     components: {
         ListUser,
-        //SearchUser,
         ProfileSetting
 
-    }
+    },
   
 
 }

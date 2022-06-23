@@ -1,4 +1,5 @@
 <template>
+<profile-setting></profile-setting>
  <div class=" z-0  flex items-center justify-center  mb-8 py-7 md:py-12 px-4 sm:px-6 lg:px-8  items-center">
 	<div class="max-w-md w-full   space-y-8 p-4 bg-gray-100 rounded-xl shadow-lg z-10">
 		<div class="grid  gap-8 grid-cols-1">
@@ -31,7 +32,12 @@
 <script>
 //import axios from 'axios'
 import {uploadOrder} from '../../api/OrderApi'
+import ProfileSetting from '../NavbarTop.vue'
 export default ({
+  components: {
+        ProfileSetting
+
+    },
     data() {
     return {
     file: '',
@@ -55,7 +61,13 @@ export default ({
         
      },
         
-    }
+    },
+    async mounted(){
+      let user = localStorage.getItem('user-info');
+      if(!user){
+          this.$router.push({name:'login'});
+      }
+  }
    
 })
 </script>

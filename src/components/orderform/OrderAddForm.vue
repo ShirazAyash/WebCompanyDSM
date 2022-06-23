@@ -1,4 +1,5 @@
 <template>
+<profile-setting></profile-setting>
   <div class=" z-0  flex items-center justify-center  mb-8 py-7 md:py-12 px-4 sm:px-6 lg:px-8  items-center">
 	<div class="max-w-md w-full   space-y-8 p-4 bg-gray-100 rounded-xl shadow-lg z-10">
 		<div class="grid  gap-8 grid-cols-1">
@@ -91,6 +92,7 @@
                         {{messagetouser}}
                         </div>
 								<div class="mt-5 text-right md:space-x-3 md:block flex flex-col-reverse">
+                  <router-link to="/orders" class="mb-2 md:mb-0 bg-white px-5 py-2 text-sm shadow-sm font-medium tracking-wider border text-gray-600 rounded-full hover:shadow-lg hover:bg-gray-100"> Cancel </router-link>
 									<button @click="createOrder()" class="transition duration-200  ease-in-out mb-2 md:mb-0 bg-green-400 px-5 py-2 text-sm shadow-sm font-medium tracking-wider text-white rounded-full hover:shadow-lg hover:bg-green-600"> Add order </button>
 								</div>
 							</div>
@@ -102,30 +104,34 @@
 </template>
 
 <script>
+import ProfileSetting from '../NavbarTop.vue'
 import { reactive } from '@vue/reactivity'
 import {addOrder} from '../../composables/UserService'//UserService'
 import VueGoogleAutocomplete from "vue-google-autocomplete";
-import { onMounted } from '@vue/runtime-core'
-import useUser from '../../composables/Orders'
+//import { onMounted } from '@vue/runtime-core'
+//import useUser from '../../composables/Orders'
 //import Header from './HeaderSign.vue'
 export default {
   name: 'OrderForm',
-  components: { VueGoogleAutocomplete },
+  components: { 
+    VueGoogleAutocomplete,
+    ProfileSetting
+      },
   props:['id']
 	,
-	setup(props){
+	setup(){
 		let orderdata=reactive({
 			'src_address':'',
 			'dest_address':'',
 		})
 
-		const {order,getOrder}=useUser()//,storeUser,updateUser} = useUser()
+		//const {order,getOrder}=useUser()//,storeUser,updateUser} = useUser()
 
 
-		if(props.id){
-			onMounted(getOrder(props.id))
-			orderdata = order
-		}
+		// if(props.id){
+		// 	onMounted(getOrder(props.id))
+		// 	orderdata = order
+		// }
 
 
 		// const saveUser=async()=>{
@@ -189,11 +195,8 @@ export default {
         if(this.validInput()){
           console.log("in")
             addOrder(order).then(response => {
-            
                 if(response.status=='ERROR'){
-				this.messagetouser = response.message;
-                    // localStorage.setItem("user-info",JSON.stringify(response.user));
-                    // this.$router.push({name:'home'});
+                  this.messagetouser = response.message;
                 }else{
                   this.$router.push({name:'orders'});
 					alert(response.message)
@@ -224,10 +227,14 @@ export default {
 
   },
   mounted() {
-      // To demonstrate functionality of exposed component functions
-      // Here we make focus on the user input
-      this.$refs.src_address.focus();
-      this.$refs.dst_address.focus();
+      let user = localStorage.getItem('user-info');
+      if(user){
+        this.$refs.src_address.focus();
+        this.$refs.dst_address.focus();
+      }else{
+         this.$router.push({name:'login'});
+      }
+     
     },
 //   mounted(){
 //       let user = localStorage.getItem('user-info');

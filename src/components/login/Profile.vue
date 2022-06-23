@@ -1,4 +1,5 @@
 <template>
+<profile-setting></profile-setting>
    <div class=" z-0  flex items-center justify-center  mb-8 py-7 md:py-12 px-4 sm:px-6 lg:px-8  items-left">
 	<div class="max-w-md w-full   space-y-8 p-4 bg-gray-100 rounded-xl shadow-lg z-10">
 		<div class="grid  gap-8 grid-cols-1">
@@ -67,10 +68,14 @@
 </template>
 
 <script>
+import ProfileSetting from '../NavbarTop.vue'
 import {updateCompany} from '../../composables/UserService'
 import useUser from '../../composables/Users'
 export default {
   name: 'Profile',
+  components: {
+        ProfileSetting
+    },
   data() {
     return {
       user_name: '',
@@ -92,7 +97,7 @@ export default {
 			console.log(response)
             });
         }else{
-            this.messagetouser = "invalid input(company name length must be grater then 2)";
+            this.messagetouser = "invalid input";
         }
         
     }
@@ -101,7 +106,7 @@ export default {
     const {data,getAllData} = useUser() 
       let user = localStorage.getItem('user-info');
       if(!user){
-          this.$router.push({name:'home'});
+          this.$router.push({name:'login'});
       }else{
         this.user_name = JSON.parse(user).user_name;
         this.company_name = JSON.parse(user).company_name;
