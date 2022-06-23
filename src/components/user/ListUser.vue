@@ -133,11 +133,10 @@ export default {
             isFilter.value=true
             switch(data){
                 case 'all':
-                    // filteredData.value = await getAllData({status:'no'})
+                    filteredData.value = await getAllData({company_id:'no'})
                     filteredData.value = await getAllData({company_id:id})
                     break;
                 case 'idle':
-                    
                     filteredData.value = await getAllData({company_id:id,status:'idle'})
                     break;
                 case 'offline':
