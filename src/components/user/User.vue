@@ -10,12 +10,15 @@
         </td>
         <td class="px-5 py-5  border-gray-200 bg-white text-sm  ">
             <div class="flex items-center ">
-                <div class="flex-shrink-0 w-10 h-10">
+                <div v-if="userdata.first_name" class="flex-shrink-0 w-10 h-10">
                     <img src="../../assets/user.png" alt="user icon">
                 </div>
+                <div v-else class="flex-shrink-0 w-10 h-10">
+                    <img src="../../assets/nouser.png" alt="user icon">
+                </div>
                 <div class="ml-2 text-sm">
-                    <p class="md:text-base text-gray-900 whitespace-pre">
-                        {{`${userdata.first_name} ${userdata.last_name}`}}
+                    <p  class="md:text-base text-gray-900 whitespace-pre">
+                        {{userdata.first_name}} {{userdata.last_name}}
                     </p>
                 </div>
             </div>

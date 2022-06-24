@@ -1,4 +1,20 @@
 <template>
+<OrdersAlert v-if="popupTriggersAlert.buttonTrigger" 
+                    
+                :PopupAlert="() => PopupAlert('buttonTrigger','')">
+                <div class=" z-0  flex items-center justify-center  mb-8 py-7 md:py-12 px-4 sm:px-6 lg:px-8  items-left">
+	<div class="max-w-md w-full   space-y-8 p-4 bg-gray-100 rounded-xl shadow-lg z-10">
+		<div class="grid  gap-8 grid-cols-1">
+				<div class="flex flex-col ">
+            <div class="flex flex-col text-red-500 sm:flex-row items-left">
+                <span class="material-icons">error_outline</span>
+							<h2  class="font-semibold text-lg mr-auto">attention: {{popupTriggersAlert.description}}</h2>
+						</div>
+					</div>
+				</div>
+			</div>
+   </div>
+  </OrdersAlert> 
 <div>    
     <div >
         <div class="container  mx-auto pb-6 px-4  sm:px-8">
@@ -62,22 +78,6 @@
         </div>
     </div>
 </div>
-   <OrdersAlert v-if="popupTriggersAlert.buttonTrigger" 
-                    
-                :PopupAlert="() => PopupAlert('buttonTrigger','')">
-                <div class=" z-0  flex items-center justify-center  mb-8 py-7 md:py-12 px-4 sm:px-6 lg:px-8  items-left">
-	<div class="max-w-md w-full   space-y-8 p-4 bg-gray-100 rounded-xl shadow-lg z-10">
-		<div class="grid  gap-8 grid-cols-1">
-				<div class="flex flex-col ">
-            <div class="flex flex-col text-red-500 sm:flex-row items-left">
-                <span class="material-icons">error_outline</span>
-							<h2  class="font-semibold text-lg mr-auto">attention: {{popupTriggersAlert.description}}</h2>
-						</div>
-					</div>
-				</div>
-			</div>
-   </div>
-  </OrdersAlert> 
 <!-- </div> -->
 </template>
 

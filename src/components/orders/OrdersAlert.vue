@@ -19,8 +19,8 @@ export default {
     position: fixed;
     width: 20%;
     height: 25%;
-    bottom: 10%;
-    right:10%;
+    bottom: 30%;
+    right:20%;
     z-index: 99;
     /* background-color: rgba(92, 173, 227, 0.359);  */
 
