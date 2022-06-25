@@ -8,7 +8,7 @@
     :center="center"
     :zoom="13"
     map-type-id="terrain"
-    style=" width: 100vw; height: 50rem"
+    style=" width: 96vw; height: 57rem"
   >
     <GMapCluster :zoomOnClick="true">
       <GMapMarker
@@ -209,10 +209,12 @@ export default {
             const id = JSON.parse(user)._id;
             await getAllData({company_id:id})
             console.log(data.value)
-            this.center = {
-                  lat:parseFloat(ordersdata.value[0].src.lat),
-                  lng:parseFloat(ordersdata.value[0].src.long)
-                }
+            if(ordersdata.value[0]){
+              this.center = {
+                    lat:parseFloat(ordersdata.value[0].src.lat),
+                    lng:parseFloat(ordersdata.value[0].src.long)
+                  }
+            }
             for (let index = 0; index < data.value; index++) {
               var order = {}
               order= {position:

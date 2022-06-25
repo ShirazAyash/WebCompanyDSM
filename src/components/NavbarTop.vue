@@ -60,7 +60,7 @@ export default {
         },
         async logout(){
             localStorage.clear();
-            this.$router.push({name:'signup'});
+            this.$router.push({name:'login'});
         }
     }
 }

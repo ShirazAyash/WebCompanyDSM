@@ -1,20 +1,4 @@
 <template>
-<OrdersAlert v-if="popupTriggersAlert.buttonTrigger" 
-                    
-                :PopupAlert="() => PopupAlert('buttonTrigger','')">
-                <div class=" z-0  flex items-center justify-center  mb-8 py-7 md:py-12 px-4 sm:px-6 lg:px-8  items-left">
-	<div class="max-w-md w-full   space-y-8 p-4 bg-gray-100 rounded-xl shadow-lg z-10">
-		<div class="grid  gap-8 grid-cols-1">
-				<div class="flex flex-col ">
-            <div class="flex flex-col text-red-500 sm:flex-row items-left">
-                <span class="material-icons">error_outline</span>
-							<h2  class="font-semibold text-lg mr-auto">attention: {{popupTriggersAlert.description}}</h2>
-						</div>
-					</div>
-				</div>
-			</div>
-   </div>
-  </OrdersAlert> 
 <div>    
     <div >
         <div class="container  mx-auto pb-6 px-4  sm:px-8">
@@ -31,7 +15,7 @@
                         <p class="text-gray-400 mt-2 text-left mb-5">{{data}} orders</p>
                     </div>
                     <div>
-                        <router-link to="/csv" class="transition duration-200  ease-in-out mb-2 md:mb-0 bg-green-400 px-5 py-2 text-sm shadow-sm font-medium tracking-wider text-white rounded-full hover:shadow-lg hover:bg-green-200">
+                        <router-link to="/csv" class="transition duration-200  ease-in-out mb-2 md:mb-0 bg-blue-400 px-5 py-2 text-sm shadow-sm font-medium tracking-wider text-white rounded-full hover:shadow-lg hover:bg-blue-200">
                              <span class="material-icons-outlined">
                                 post_add
                             </span>
@@ -40,7 +24,7 @@
                         <br>
                         <br>
                          
-                        <router-link to="/newOrder" class="transition duration-200  ease-in-out mb-2 md:mb-0 bg-blue-600 px-5 py-2 text-sm shadow-sm font-medium tracking-wider text-white rounded-full hover:shadow-lg hover:bg-blue-400">
+                        <router-link to="/newOrder" class="transition duration-200  ease-in-out mb-2 md:mb-0 bg-blue-400 px-5 py-2 text-sm shadow-sm font-medium tracking-wider text-white rounded-full hover:shadow-lg hover:bg-blue-200">
                              <span class="material-icons-outlined">
                                 add_circle
                             </span>
@@ -85,14 +69,12 @@
 import {   computed, onMounted,ref    } from '@vue/runtime-core'
 import useOrder from '../../composables/Orders'
 import Order from '../orders/order.vue'
-import OrdersAlert from './OrdersAlert.vue'
 //import FilterOrder from '../../components/functionalities/FilterOrder.vue'
 import { useRouter } from 'vue-router'
 export default {
     name:'ListOrder',
     components:{
         Order,
-        OrdersAlert,
         //FilterOrder,
     },
        
@@ -101,16 +83,6 @@ export default {
         //Get User data 
         
         const {ordersdata,data,getAllData,deleteOrder} = useOrder() 
-
-        const popupTriggersAlert = ref({
-      buttonTrigger: false,
-      description: 'hihi',
-    });
-    const PopupAlert = (trigger,data)=>{
-      popupTriggersAlert.value[trigger]= !popupTriggersAlert.value[trigger];
-      popupTriggersAlert.value['description']=data
-      console.log(data)
-    }
         
         const filterbyPageOrder=computed(()=>{
             
@@ -159,15 +131,6 @@ export default {
             if(user){
                 const id = JSON.parse(user)._id;
                 await getAllData({company_id:id})
-                //let flag = false;
-                let count=0
-                ordersdata.value.forEach(element => {
-                    if(element.status=='issue'){
-                        count++
-                        popupTriggersAlert.value.buttonTrigger=true
-                        popupTriggersAlert.value.description='there are '+count+ ' orders issue please find couriers'
-                    }
-                });
             }else{
                 router.push({name:'login'});
             }
@@ -177,8 +140,7 @@ export default {
         
         return{
             data,ordersdata,deleteOrder,
-            filteredDataOrder,isfilterOrder,filterbyPageOrder,filterData,popupTriggersAlert,
-            PopupAlert,
+            filteredDataOrder,isfilterOrder,filterbyPageOrder,filterData
         }
     }
 }

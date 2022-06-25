@@ -16,23 +16,16 @@ export default {
 </script>
 <style scoped>
 .popup{
-    position: fixed;
-    width: 20%;
-    height: 25%;
-    bottom: 30%;
-    right:20%;
-    z-index: 99;
-    /* background-color: rgba(92, 173, 227, 0.359);  */
-
-    display: flex;
-    align-items: center;
-    justify-content: center;
-}
-.popup-inner{
-    /* position: fixed; */
+   position: fixed;
+    
+    bottom: 20%;
     right: 10%;
-    /* //background-color: rgba(235, 0, 0, 0.598); */
+    align-items: right;
+    justify-content: right;
+    align-items: right;
+    justify-content:right;
 }
+
 
 
 </style>
