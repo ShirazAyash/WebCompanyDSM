@@ -1,6 +1,6 @@
 
 <template>
-  <div>
+  <div class="pl-20 pr-50">
     <GoogleMap />
   </div>
 </template>

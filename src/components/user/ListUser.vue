@@ -10,7 +10,7 @@
                             <span class="material-icons">
                                     people
                             </span>
-                            <router-link to="/newCourier" class="hover:shadow-md p-3   md:p-1 rounded-full duration-1000 ease-in-out transform hover:scale-125 delay-200  hover:bg-blue-300 hover:text-3xl font-bold text-center bg-blue-200  cursor-pointer ">
+                            <router-link to="/newCourier" class="hover:shadow-md p-3   md:p-1 rounded-full duration-1000 ease-in-out transform hover:scale-125 delay-200  hover:bg-blue-200 hover:text-3xl font-bold text-center bg-blue-300  cursor-pointer ">
                              <span class="p-3    xl:mr-7 material-icons-outlined">
                                 person_add
                             </span>

@@ -1,7 +1,9 @@
 <template> 
 
 <div class="pb-8 pl-2">
-<a @click="infoOrder('buttonTrigger',orderdata._id)" class="cursor-pointer">
+  
+<a @click="infoOrder('buttonTrigger',orderdata._id)" class="w-1/2 cursor-pointer">
+  
 <div class="w-1/2 h-20 w-70 bg-gray-100 rounded-xl shadow-lg">
 <!-- <table class="table-auto"> -->
    <div class="grid grid-cols-5">
@@ -31,19 +33,36 @@
    </div>
 <!-- </table> -->
 </div>
+ 
 </a>
 </div>
-
+<OrdersAlert v-if="popupTriggersAlert.buttonTrigger" 
+                    
+                :PopupAlert="() => PopupAlert('buttonTrigger','')">      
+	<div class=" max-w-md space-y-8 p-4 bg-gray-100 rounded-xl shadow-lg z-10">
+		<div class="grid gap-8 grid-cols-1">
+				<div class="flex flex-col ">
+            <div class="flex flex-col text-gray-500 sm:flex-row items-left">
+                <span class="material-icons text-red-500">error_outline </span>
+							<h2  class="font-semibold text-lg mr-auto">attention: {{popupTriggersAlert.description}}</h2>
+						</div>
+					</div>
+				</div>
+			</div>
+  </OrdersAlert> 
 <OrderInfo v-if="popupTriggers.buttonTrigger" 
                 :id="orderdata._id" :infoOrder="() => infoOrder('buttonTrigger')">
                 <h2>{{orderdata._id}}</h2>
             </OrderInfo>
+
 </template>
 
 <script>
 //import useOrder from '../../composables/Orders';
+import { onMounted } from '@vue/runtime-core'
 import { ref} from 'vue'
 import OrderInfo from './OrderInfo.vue'
+import OrdersAlert from './OrdersAlert.vue'
 
 export default {
     name:'Order',
@@ -52,11 +71,13 @@ export default {
             type:Object,
             require:true,
         },
+        OrdersAlert,
     },
     components:{
-        OrderInfo
+        OrderInfo,
+        OrdersAlert
     },
-   setup(){
+   setup(props){
     const popupTriggers = ref({
       buttonTrigger: false,
     });
@@ -64,10 +85,29 @@ export default {
       popupTriggers.value[trigger]= !popupTriggers.value[trigger]
       console.log("infun")
     }
+     const popupTriggersAlert = ref({
+      buttonTrigger: false,
+      description: 'hihi',
+    });
+    const PopupAlert = (trigger,data)=>{
+      popupTriggersAlert.value[trigger]= !popupTriggersAlert.value[trigger];
+      popupTriggersAlert.value['description']=data
+      console.log(data)
+    }
+     onMounted(async ()=>{
+      if(props.orderdata.status=='issue'){
+        popupTriggersAlert.value.buttonTrigger=true
+        popupTriggersAlert.value.description='there is no available courier from '+props.orderdata.src_address +'to '  + props.orderdata.src_address; 
+      }
+            
+    })
+         
     return{
       OrderInfo,
       popupTriggers,
-      infoOrder
+      infoOrder,
+      popupTriggersAlert,
+      PopupAlert
     }
   },
     
