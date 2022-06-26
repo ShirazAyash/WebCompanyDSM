@@ -24,6 +24,9 @@
 
     </div>
   </div>
+  <div class="text">
+        {{messagetouser}}
+  </div>
   </div>
 				</div>
 			</div>
@@ -41,6 +44,7 @@ export default ({
     data() {
     return {
     file: '',
+    messagetouser:'',
   }
     },
     methods:{
@@ -55,8 +59,14 @@ export default ({
             const formData = new FormData();
             formData.append('file', this.file);
             formData.append('company', company_id);
-            uploadOrder(formData);
+            uploadOrder(formData).then(response => {
+                    this.$router.push({name:'orders'});
+                    alert('the file was uploaded successfully');
+                    console.log(response)
+            });
 
+        }else{
+          this.messagetouser='please enter a valid file'
         }
         
      },
