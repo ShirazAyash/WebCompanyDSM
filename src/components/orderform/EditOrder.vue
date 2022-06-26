@@ -1,6 +1,11 @@
 <template>
+
    <div class=" w-1/2 flex  items-center justify-center mb-8 py-7 md:py-12 px-4 sm:px-6 lg:px-8  items-left">
+
 	<div class="max-w-md w-full space-y-8 p-4 bg-gray-100 rounded-xl shadow-lg z-10">
+		<button @click="infoOrder()"  class=" duration-200  ease-in-out mb-2 md:mb-0 px-5 py-2 text-sm shadow-sm font-medium tracking-wider text-black rounded-full hover:shadow-lg hover:bg-blue-200" >
+             <span class="material-icons">close</span>
+          </button>
 		<div class="grid  gap-8 grid-cols-1">
 				<div class="flex flex-col ">
 					<!-- <label class=" font-semibold text-gray-600">{{userdata.deadline}}</label> -->
@@ -92,8 +97,8 @@
                         {{messagetouser}}
                         </div>
 								<div class="mt-5 text-right md:space-x-3 md:block flex flex-col-reverse">
-									<button @click="infoOrder()" class="mb-2 md:mb-0 bg-white px-5 py-2 text-sm shadow-sm font-medium tracking-wider border text-gray-600 rounded-full hover:shadow-lg hover:bg-gray-100"> Cancel </button>
 									<button @click="updateOrder(userdata)" class="transition duration-200  ease-in-out mb-2 md:mb-0 bg-green-400 px-5 py-2 text-sm shadow-sm font-medium tracking-wider text-white rounded-full hover:shadow-lg hover:bg-green-600"> Update </button>
+									<button @click="deleteOrder(userdata._id);infoOrder()" class="mb-2 md:mb-0 bg-white px-5 py-2 text-sm shadow-sm font-medium tracking-wider border text-red-600 rounded-full hover:shadow-lg hover:bg-gray-100"> Delete order </button>
 								</div>
 							</div>
 					</div>
@@ -129,11 +134,12 @@ export default {
 })
 		
 
-		const {getOrder}=useUser()
+		const {getOrder,deleteOrder}=useUser()
 
 
 		if(props.id){
 			onMounted( getOrder(props.id).then(response=>{
+				userdata._id=response._id
 				userdata.dst_contact = response.dst_contact
 				userdata.src_contact = response.src_contact
 				userdata.courier_id = response.courier_id
@@ -146,7 +152,7 @@ export default {
 		}
 	
 		return{
-			userdata,
+			userdata,deleteOrder
 		}
 	
 	},

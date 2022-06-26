@@ -1,12 +1,6 @@
 <template>
-  <div class="popup">
-      <!-- <div class="popup-inner"> -->
-          <!-- <slot /> -->
+  <div class="pl-52 popup">
           <edit-order :id="id" :infoOrder="infoOrder"></edit-order>
-          <!-- <button @click="infoOrder()"  class="popup-close" >
-              close
-          </button> -->
-      <!-- </div> -->
   </div>
 </template>
 
