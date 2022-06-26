@@ -1,9 +1,7 @@
 <template> 
 
-<div class="pb-8 pl-2">
-  
-<a @click="infoOrder('buttonTrigger',orderdata._id)" class="w-1/2 cursor-pointer">
-  
+<div class="pb-8 pl-2"> 
+<a @click="infoOrder('buttonTrigger',orderdata._id)" class="w-1/2 cursor-pointer"> 
 <div class="w-1/2 h-20 w-70 bg-gray-100 rounded-xl shadow-lg">
 <!-- <table class="table-auto"> -->
    <div class="grid grid-cols-5">
