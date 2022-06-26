@@ -21,10 +21,10 @@ export async function uploadOrder(formData) {
             }
         }
         ).then(function(){
-            console.log('SUCCESS!!');
+            return 'SUCCESS!!';
     })
     .catch(function(){
-        console.log('FAILURE!!');
+       return 'FAILURE!!';
     });
 }
 export async function deleteo(id) {
