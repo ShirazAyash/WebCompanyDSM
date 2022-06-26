@@ -19,11 +19,13 @@ export default {
    position: fixed;
     
     bottom: 20%;
-    right: 10%;
+    right: 20%;
     align-items: right;
+    padding-top: 20%;
     justify-content: right;
     align-items: right;
     justify-content:right;
+    background: white;
 }
 
 

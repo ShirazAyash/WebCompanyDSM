@@ -42,7 +42,7 @@
 				<div class="flex flex-col ">
             <div class="flex flex-col text-gray-500 sm:flex-row items-left">
                 <span class="material-icons text-red-500">error_outline </span>
-							<h2  class="font-semibold text-lg mr-auto">attention: {{popupTriggersAlert.description}}</h2>
+							<h2  class="font-semibold text-m mr-auto">attention: {{popupTriggersAlert.description}}</h2>
 						</div>
 					</div>
 				</div>
@@ -81,21 +81,19 @@ export default {
     });
     const infoOrder = (trigger)=>{
       popupTriggers.value[trigger]= !popupTriggers.value[trigger]
-      console.log("infun")
     }
      const popupTriggersAlert = ref({
       buttonTrigger: false,
-      description: 'hihi',
+      description: '',
     });
     const PopupAlert = (trigger,data)=>{
       popupTriggersAlert.value[trigger]= !popupTriggersAlert.value[trigger];
       popupTriggersAlert.value['description']=data
-      console.log(data)
     }
      onMounted(async ()=>{
       if(props.orderdata.status=='issue'){
         popupTriggersAlert.value.buttonTrigger=true
-        popupTriggersAlert.value.description='there is no available courier from '+props.orderdata.src_address +'to '  + props.orderdata.src_address; 
+        popupTriggersAlert.value.description='can not find courier from '+props.orderdata.src_address +' to '  + props.orderdata.src_address; 
       }
             
     })
